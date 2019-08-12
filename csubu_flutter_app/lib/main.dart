@@ -14,7 +14,7 @@ void main() {
 
 class CSUBUFlutterApp extends StatelessWidget {
 
-  final appTitle = 'CSUBU App Page';
+  final appTitle = 'App By Me';
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +51,7 @@ class _AppHomePageState extends State<AppHomePage> {
   var _page = 0;
 
   _getStudents() async {
-    var url = 'http://cs.sci.ubu.ac.th:7512/topic-1/Wat_59110440130/_search?from=${_page*10}&size=10';
+    var url = 'http://cs.sci.ubu.ac.th:7512/topic-1/Wat_59110440130/_search?from=${_page*2}&size=2';
     const headers = { 'Content-Type': 'application/json; charset=utf-8' };
     const query = { 'query': { 'match_all': {} } };
     final response = await http.post(url, headers: headers, body: json.encode(query));
@@ -89,6 +89,7 @@ class _AppHomePageState extends State<AppHomePage> {
           student['email'].runes.forEach((c) { sum += c; });
           return ListTile(
               title: Row(
+
                   children: <Widget>[
                     // Image.asset('assets/images/csubu-bw.png', width: 48, height: 48),
                     CircleAvatar(backgroundImage: NetworkImage(student["img"])),
@@ -117,12 +118,16 @@ class _AppHomePageState extends State<AppHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: Text(widget.title),
+          backgroundColor: Colors.green,
+
         ),
         body: Center(
           child: (_loading)? loadingWidget(context) : studentWidgets(context),
+
         ),
         bottomNavigationBar: BottomAppBar(
           child: Container(height: 50.0,),
+          color: Colors.green,
         ),
         floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,
