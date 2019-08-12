@@ -125,10 +125,26 @@ class _AppHomePageState extends State<AppHomePage> {
           child: (_loading)? loadingWidget(context) : studentWidgets(context),
 
         ),
-        bottomNavigationBar: BottomAppBar(
-          child: Container(height: 50.0,),
-          color: Colors.green,
+        bottomNavigationBar: BottomNavigationBar(
+
+          items:[
+            BottomNavigationBarItem(
+              title: Text("Home"),
+              icon: Icon(Icons.home),
+            ),
+            BottomNavigationBarItem(
+                title: Text("Camera"),
+                icon: Icon(Icons.camera_alt)
+            ),
+            BottomNavigationBarItem(
+                title: Text("Setting"),
+                icon: Icon(Icons.settings)
+            ),
+          ],
+          backgroundColor: Colors.green,
+
         ),
+
         floatingActionButton: FloatingActionButton(
           onPressed: _incrementCounter,
           tooltip: 'Increment',
